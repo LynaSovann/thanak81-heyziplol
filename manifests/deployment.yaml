@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: thanak81-heyziplol-deployment
+  labels:
+    app: thanak81-heyziplol
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: thanak81-heyziplol
+  template:
+    metadata:
+      labels:
+        app: thanak81-heyziplol
+    spec:
+      containers:
+        - name: thanak81-heyziplol-container
+          image: pipejet/thanak81-heyziplol:latest
+          ports:
+            - containerPort: 8080
