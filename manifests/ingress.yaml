@@ -1,0 +1,28 @@
+ apiVersion: networking.k8s.io/v1
+ kind: Ingress
+ metadata:
+   name: thanak81-heyziplol-https-ingress
+   namespace: thanak81-heyziplol
+   annotations:
+     nginx.ingress.kubernetes.io/ssl-redirect: "false"
+     nginx.ingress.kubernetes.io/use-regex: "true"
+     nginx.ingress.kubernetes.io/proxy-body-size: 8m    
+     nginx.ingress.kubernetes.io/rewrite-target: /
+ spec:
+   ingressClassName: nginx
+   tls:
+     - hosts:
+         - thanak81-heyziplol.assessify.org
+       secretName: thanak81-heyziplol-secret-tls
+   rules:
+     - host: thanak81-heyziplol.assessify.org
+       http:
+         paths:
+           - path: /
+             pathType: Prefix
+             backend:
+               service:
+                 name: thanak81-heyziplol-service
+                 port:
+                   number: 8232
+ 
