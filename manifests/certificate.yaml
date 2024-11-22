@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: thanak81-heyziplol-certificate
+  namespace: thanak81-heyziplol
+spec:
+  secretName: thanak81-heyziplol-secret-tls
+  commonName: thanak81-heyziplol.assessify.org
+  dnsNames:
+  - thanak81-heyziplol.assessify.org
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
